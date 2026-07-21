@@ -177,11 +177,11 @@ header {
 .logo-text {
   font-weight: 700;
   font-size: 1.5rem;
-  color: var(--dark);
+  color: #4162A5;
 }
 
 .logo-text span {
-  color: var(--secondary);
+  color: #DE542A;
 }
 
 .logo-sub {
@@ -233,6 +233,10 @@ header {
   padding: 10px 26px;
   font-size: 0.9rem;
 }
+.nav-cta a{
+  color: white;
+}
+
 
 /* Hamburger */
 .hamburger {
