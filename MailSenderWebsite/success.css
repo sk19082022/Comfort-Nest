@@ -1,0 +1,460 @@
+/* ========================================
+   CSS VARIABLES - Comfort Nest Theme
+   ======================================== */
+:root {
+  --primary: #4F67B8;
+  --primary-dark: #3d52a0;
+  --secondary: #D66B3B;
+  --secondary-dark: #c25a2e;
+  --white: #ffffff;
+  --cream: #fefcf7;
+  --light-bg: #f8f5f0;
+  --dark: #1c1c1c;
+  --text-primary: #1a2639;
+  --text-muted: #4a5568;
+  --green-primary: #22c55e;
+  --green-dark: #16a34a;
+  --green-glow: rgba(34, 197, 94, 0.2);
+  --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 30px 60px -15px rgba(0, 20, 40, 0.35);
+  --radius-card: 32px;
+  --radius-btn: 60px;
+  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f8f5f0, #f0ece5);
+  padding: 1.5rem;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   BACKGROUND BLOBS
+   ======================================== */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  animation: floatBlob 14s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(79, 103, 184, 0.2);
+  top: -10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 350px;
+  height: 350px;
+  background: rgba(214, 107, 59, 0.15);
+  bottom: -10%;
+  right: -5%;
+  animation-delay: 3s;
+}
+
+.blob-3 {
+  width: 280px;
+  height: 280px;
+  background: rgba(79, 103, 184, 0.12);
+  top: 50%;
+  left: 60%;
+  animation-delay: 6s;
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -40px) scale(1.1); }
+}
+
+/* ========================================
+   CONFETTI CANVAS
+   ======================================== */
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.page-header {
+  width: 100%;
+  max-width: 540px;
+  margin-bottom: 1.5rem;
+  z-index: 5;
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition);
+  padding: 8px 16px;
+  border-radius: 40px;
+  background: rgba(79, 103, 184, 0.08);
+}
+
+.back-link:hover {
+  background: rgba(79, 103, 184, 0.15);
+  transform: translateX(-4px);
+}
+
+.back-link i {
+  font-size: 0.85rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.header-icon {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.brand-orange {
+  color: var(--secondary);
+}
+
+/* ========================================
+   SUCCESS CARD
+   ======================================== */
+.page-wrapper {
+  width: 100%;
+  max-width: 540px;
+  z-index: 5;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.success-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  padding: 2.8rem 2.5rem;
+  text-align: center;
+  transition: box-shadow var(--transition);
+  animation: cardEntry 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+}
+
+.success-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+@keyframes cardEntry {
+  0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ========================================
+   CHECKMARK
+   ======================================== */
+.checkmark-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.circle-bg {
+  width: 100px;
+  height: 100px;
+  background: var(--green-glow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseCircle 2s ease-in-out infinite;
+}
+
+@keyframes pulseCircle {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.checkmark {
+  width: 70px;
+  height: 70px;
+  display: block;
+}
+
+.checkmark-circle {
+  stroke: var(--green-primary);
+  stroke-width: 4;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: strokeCircle 0.8s ease-in-out forwards 0.3s;
+}
+
+.checkmark-check {
+  stroke: var(--green-primary);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: strokeCheck 0.5s ease-in-out forwards 0.7s;
+}
+
+@keyframes strokeCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes strokeCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ========================================
+   CONTENT
+   ======================================== */
+.badge {
+  display: inline-block;
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--green-primary);
+  padding: 4px 18px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8rem;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sub-message {
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.contact-message {
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+/* ========================================
+   BUTTON
+   ======================================== */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 2.8rem;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(79, 103, 184, 0.35);
+  transition: all var(--transition);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  margin-bottom: 1.5rem;
+}
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #5a72c8, #3d52a0);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(79, 103, 184, 0.45);
+}
+
+.btn-back:active {
+  transform: scale(0.96);
+}
+
+.btn-back i {
+  font-size: 1rem;
+}
+
+/* ========================================
+   COUNTDOWN
+   ======================================== */
+.countdown-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  opacity: 0.7;
+  letter-spacing: 0.2px;
+}
+
+.countdown-wrapper i {
+  font-size: 0.85rem;
+}
+
+#countdownText {
+  display: inline-block;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  .success-card {
+    padding: 2rem 1.5rem;
+    border-radius: 28px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .sub-message {
+    font-size: 0.95rem;
+  }
+
+  .contact-message {
+    font-size: 0.85rem;
+  }
+
+  .circle-bg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .checkmark {
+    width: 56px;
+    height: 56px;
+  }
+
+  .btn-back {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+
+  .back-link {
+    justify-content: center;
+  }
+
+  .header-brand {
+    justify-content: center;
+  }
+
+  .blob-1 { width: 200px; height: 200px; }
+  .blob-2 { width: 180px; height: 180px; }
+  .blob-3 { width: 150px; height: 150px; }
+}
+
+@media (max-width: 400px) {
+  .success-card {
+    padding: 1.5rem 1rem;
+    border-radius: 24px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .circle-bg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .checkmark {
+    width: 48px;
+    height: 48px;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-wrapper {
+    max-width: 560px;
+  }
+
+  .success-card {
+    padding: 3.5rem 3rem;
+  }
+}
